@@ -10,7 +10,7 @@ public class Line extends CubicCurve {
         super.setControlX1((startX+endX)/2);super.setControlY1(startY);
         super.setControlX2((startX+endX)/2);super.setControlY2(endY);
         super.setStrokeWidth(1);
-        super.setFill(Color.WHITE);
+        super.setFill(Color.TRANSPARENT);
         super.setStroke(Color.BLACK);
     }
 }
