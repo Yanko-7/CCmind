@@ -44,6 +44,7 @@ public class Controller implements Initializable {
                 tmp.setParent(CurNode);
             }
             A1.getChildren().add(tmp);
+            A1.getChildren().add(tmp.getLine());
             Draw.update_len(root);
             Draw.update(root, 1);
         });

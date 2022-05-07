@@ -49,6 +49,7 @@ public class Draw {
                     double pos = last + tmp.getBlockLen() / 2 - Draw.RecH / 2;
                     tmp.setLayoutY(pos);
                     tmp.setLayoutX(a.getLayoutX() + 100 * tmp.getType());
+                    tmp.getLine().SetLine(tmp.getparent().getLayoutX()+Draw.RecW,tmp.getparent().getLayoutY()+Draw.RecH/2,tmp.getLayoutX(),tmp.getLayoutY()+Draw.RecH/2);
                     last = pos + tmp.getBlockLen() / 2 + Block_dis + Draw.RecH / 2;
                 }
                 for (TreeNode tmp : ROOT.getLchildren()) {
@@ -59,6 +60,7 @@ public class Draw {
                     double pos = last + tmp.getBlockLen() / 2 - Draw.RecH / 2;
                     tmp.setLayoutY(pos);
                     tmp.setLayoutX(a.getLayoutX() + 100 * tmp.getType());
+                    tmp.getLine().SetLine(tmp.getparent().getLayoutX()+Draw.RecW,tmp.getparent().getLayoutY()+Draw.RecH/2,tmp.getLayoutX(),tmp.getLayoutY()+Draw.RecH/2);
                     last = pos + tmp.getBlockLen() / 2 + Block_dis + Draw.RecH / 2;
                 }
                 for (TreeNode tmp : ROOT.getRchildren()) {
@@ -70,6 +72,7 @@ public class Draw {
                 double pos = last + tmp.getBlockLen() / 2 - Draw.RecH / 2;
                 tmp.setLayoutY(pos);
                 tmp.setLayoutX(a.getLayoutX() + 100 * tmp.getType());
+                tmp.getLine().SetLine(tmp.getparent().getLayoutX()+Draw.RecW,tmp.getparent().getLayoutY()+Draw.RecH/2,tmp.getLayoutX(),tmp.getLayoutY()+Draw.RecH/2);
                 last = pos + tmp.getBlockLen() / 2 + Block_dis + Draw.RecH / 2;
             }
             for (TreeNode tmp : a.getchildren()) {

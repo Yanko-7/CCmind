@@ -1,6 +1,7 @@
 package com.example.ccmindtest1;
 
 import javafx.scene.control.TextField;
+import javafx.scene.shape.CubicCurve;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class TreeNode extends TextField {
     private boolean isroot;
     private TreeNode parent;
     private ArrayList<TreeNode> children;
+    private Line line;
 
     TreeNode(String txt) {
         super(txt);
@@ -21,6 +23,7 @@ public class TreeNode extends TextField {
         super.setPrefWidth(Draw.RecW);
         type = 1;
         children = new ArrayList<TreeNode>();
+        line = new Line();
     }
 
     public TreeNode getparent() {
@@ -50,6 +53,10 @@ public class TreeNode extends TextField {
                 System.out.println(tmp.getLayoutX() + " " + tmp.getLayoutY() + " " + tmp.getBlockLen());
             }
         });
+    }
+
+    public Line getLine() {
+        return line;
     }
 
     public int getType() {
