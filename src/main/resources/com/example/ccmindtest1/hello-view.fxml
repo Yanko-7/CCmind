@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
+<AnchorPane fx:id="A1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
    <children>
       <MenuBar layoutY="1.0" prefHeight="36.0" prefWidth="138.0">
         <menus>
@@ -32,11 +32,7 @@
       <TreeView layoutY="37.0" prefHeight="513.0" prefWidth="138.0" />
       <ScrollPane layoutX="138.0" layoutY="36.0" prefHeight="519.0" prefWidth="572.0">
         <content>
-          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="570.0">
-               <children>
-                  <Button fx:id="B1" layoutX="298.0" layoutY="57.0" mnemonicParsing="false" onAction="#modify" text="Button" />
-               </children>
-            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="570.0" />
         </content>
       </ScrollPane>
       <Button fx:id="Add_Button" layoutX="157.0" layoutY="11.0" mnemonicParsing="false" text="添加" />

@@ -18,56 +18,51 @@ public class Controller implements Initializable {
     private Button Add_Button;
     @FXML
     private Button Del_Button;
+
     @FXML
-    public void modify(){
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        root=new TreeNode("124154");
+
+        //初始化根节点
+        root = new TreeNode("124154");
         root.setIsroot(true);
-        root.setLayoutX(200);root.setLayoutY(200);
+        root.setLayoutX(200);
+        root.setLayoutY(200);
         A1.getChildren().add(root);
         root.initNode();
-        /*root.setOnMouseClicked(event->{//lambda的简化写法
-            if(event.getButton()==MouseButton.SECONDARY){
-                System.out.println("12414");
-            }
-        });*/
-        Add_Button.setOnAction(event->{
-            if(CurNode==null)return;
-            TreeNode tmp=new TreeNode("ci");
+        //
+
+        Add_Button.setOnAction(event -> {//添加节点按键
+            if (CurNode == null) return;
+            TreeNode tmp = new TreeNode("ci");
             tmp.initNode();
-            if(CurNode.isRoot()){
+            if (CurNode.isRoot()) {
                 ROOT.getRchildren().add(tmp);
                 tmp.setParent(CurNode);
-            }
-            else{
+            } else {
                 CurNode.getchildren().add(tmp);
                 tmp.setParent(CurNode);
             }
             A1.getChildren().add(tmp);
             Draw.update_len(root);
-            Draw.update(root,1);
+            Draw.update(root, 1);
         });
-        Del_Button.setOnAction(event->{
-            if(CurNode==null||CurNode.isRoot())return;
-            Draw.Del(CurNode,A1);
-            if(CurNode.getparent().isRoot()) {
-                if(ROOT.getLchildren().contains(CurNode)){
+        Del_Button.setOnAction(event -> {//删除节点按键
+            if (CurNode == null || CurNode.isRoot()) return;
+            Draw.DelNode(CurNode, A1);
+            if (CurNode.getparent().isRoot()) {
+                if (ROOT.getLchildren().contains(CurNode)) {
                     ROOT.getLchildren().remove(CurNode);
-                }
-                else{
+                } else {
                     ROOT.getRchildren().remove(CurNode);
                 }
-            }
-            else{
+            } else {
                 CurNode.getparent().getchildren().remove(CurNode);
             }
             Draw.update_len(root);
-            Draw.update(root,1);
+            Draw.update(root, 1);
         });
+        //
     }
 
 }
