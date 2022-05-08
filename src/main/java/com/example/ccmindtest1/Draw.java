@@ -6,9 +6,9 @@ import static com.example.ccmindtest1.ROOT.*;
 import static java.lang.Math.max;
 
 public class Draw {
-    public static double RecH = 24;//固定矩阵高
-    public static double RecW = 50;//固定矩阵长
-    public static double Block_dis = 24;////固定块距
+    public static final double RecH = 24;//固定矩阵高
+    public static final double RecW = 50;//固定矩阵长
+    public static final double Block_dis = 24;////固定块距
     public static TreeNode CurNode;
 
     public static void update_len(TreeNode a) {//用于更新整棵树的所有节点的块大小，传入一个根节点即可
@@ -92,6 +92,5 @@ public class Draw {
         }
         A.getChildren().remove(a);
         A.getChildren().remove(a.getLine());
-        A.getChildren().remove(a.getView());
     }
 }

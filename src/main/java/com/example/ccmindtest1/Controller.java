@@ -27,11 +27,14 @@ public class Controller implements Initializable {
     @FXML
     private Button Automatic_layout_button;
     @FXML
+    private ScrollPane Scrollpane;
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //初始化根节点
         root = new TreeNode("124154");
+        Scrollpane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         root.setIsroot(true);
         root.setLayoutX(200);
         root.setLayoutY(200);
@@ -58,9 +61,9 @@ public class Controller implements Initializable {
                 tmp.setParent(CurNode);
                 tmp.setType(CurNode.getType());
             }
-            A1.getChildren().add(tmp);
-            A1.getChildren().add(tmp.getLine());
-            CurNode.getView().getChildren().add(tmp.getView());
+            A1.getChildren().add(tmp);//添加节点
+            A1.getChildren().add(tmp.getLine());//添加线
+            CurNode.getView().getChildren().add(tmp.getView());//添加试图
             Draw.update_len(root);
             Draw.update(root, 1);
             Draw.update(root,-1);
