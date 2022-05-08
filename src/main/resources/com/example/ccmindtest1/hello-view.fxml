@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="A1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
+<AnchorPane fx:id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
    <children>
       <MenuBar layoutY="1.0" prefHeight="36.0" prefWidth="138.0">
         <menus>
@@ -29,16 +29,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView layoutY="37.0" prefHeight="513.0" prefWidth="138.0" />
+      <TreeView fx:id="treeview" layoutY="37.0" prefHeight="513.0" prefWidth="138.0" />
       <ScrollPane layoutX="138.0" layoutY="36.0" prefHeight="519.0" prefWidth="572.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="570.0" />
+          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="792.0" prefWidth="930.0" />
         </content>
       </ScrollPane>
       <Button fx:id="Add_Button" layoutX="157.0" layoutY="11.0" mnemonicParsing="false" text="添加" />
       <Button fx:id="Del_Button" layoutX="240.0" layoutY="11.0" mnemonicParsing="false" text="删除" />
-      <Button layoutX="317.0" layoutY="11.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="397.0" layoutY="11.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="474.0" layoutY="11.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="left_layout_button" layoutX="317.0" layoutY="11.0" mnemonicParsing="false" text="左布局" />
+      <Button fx:id="right_layout_button" layoutX="397.0" layoutY="11.0" mnemonicParsing="false" text="右布局" />
+      <Button fx:id="Automatic_layout_button" layoutX="474.0" layoutY="11.0" mnemonicParsing="false" text="自动调整" />
    </children>
 </AnchorPane>

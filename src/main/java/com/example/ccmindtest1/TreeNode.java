@@ -1,11 +1,7 @@
 package com.example.ccmindtest1;
-
 import javafx.scene.control.TextField;
-import javafx.scene.shape.CubicCurve;
-
+import javafx.scene.control.TreeItem;
 import java.util.ArrayList;
-import java.util.List;
-
 import static com.example.ccmindtest1.Draw.*;
 
 public class TreeNode extends TextField {
@@ -13,6 +9,7 @@ public class TreeNode extends TextField {
     private int type;//该节点向左还是向右 type =-1 向左，=1向右
     private boolean isroot;
     private TreeNode parent;
+    private TreeItem<String> view;//该节点在TreeView上的视图
     private ArrayList<TreeNode> children;
     private Line line;
 
@@ -22,10 +19,14 @@ public class TreeNode extends TextField {
         super.setPrefHeight(Draw.RecH);
         super.setPrefWidth(Draw.RecW);
         type = 1;
-        children = new ArrayList<TreeNode>();
+        children = new ArrayList<>();
         line = new Line();
+        view = new TreeItem<>(txt);
+        view.setExpanded(true);
     }
-
+    public TreeItem<String> getView() {
+        return view;
+    }
     public TreeNode getparent() {
         return parent;
     }
@@ -61,6 +62,10 @@ public class TreeNode extends TextField {
 
     public int getType() {
         return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public double getBlockLen() {
