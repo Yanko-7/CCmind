@@ -93,4 +93,5 @@ public class Draw {
         A.getChildren().remove(a);
         A.getChildren().remove(a.getLine());
     }
+
 }

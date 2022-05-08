@@ -13,7 +13,7 @@ import static com.example.ccmindtest1.Draw.*;
 public class Controller implements Initializable {
     @FXML
     private AnchorPane A1;//添加节点的地方
-    private TreeNode root;
+    private static TreeNode root;
     @FXML
     private TreeView treeview;
     @FXML
@@ -33,18 +33,18 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //初始化根节点
-        root = new TreeNode("124154");
+        root = new TreeNode("主题1");
         Scrollpane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         root.setIsroot(true);
-        root.setLayoutX(200);
-        root.setLayoutY(200);
+        root.setLayoutX(300);
+        root.setLayoutY(250);
         A1.getChildren().add(root);
         treeview.setRoot(root.getView());
         root.initNode();
         //
         Add_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;
-            TreeNode tmp = new TreeNode("ci");
+            TreeNode tmp = new TreeNode("子主题");
             tmp.initNode();
             if (CurNode.isRoot()) {
                 if(ROOT.getLchildren().size()<ROOT.getRchildren().size()){
@@ -65,6 +65,7 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
             Draw.update_len(root);
+            Pane.update_pane();
             Draw.update(root, 1);
             Draw.update(root,-1);
         });
@@ -84,6 +85,7 @@ public class Controller implements Initializable {
                 CurNode.getparent().getView().getChildren().remove(CurNode.getView());
             }
             Draw.update_len(root);
+            Pane.update_pane();
             Draw.update(root, 1);
             Draw.update(root,-1);
             CurNode=null;
@@ -94,6 +96,7 @@ public class Controller implements Initializable {
             }
             ROOT.getRchildren().clear();
             update_len(root);
+            Pane.update_pane();
             update(root,-1);
             update(root,1);
         });
@@ -103,6 +106,7 @@ public class Controller implements Initializable {
             }
             ROOT.getLchildren().clear();
             update_len(root);
+            Pane.update_pane();
             update(root,-1);
             update(root,1);
         });
@@ -116,9 +120,16 @@ public class Controller implements Initializable {
                 ROOT.getRchildren().remove(ROOT.getRchildren().size()-1);
             }
             update_len(root);
+            Pane.update_pane();
             update(root,-1);
             update(root,1);
         });
     }
+    public static TreeNode getRoot() {
+        return root;
+    }
 
+    public ScrollPane getScrollpane() {
+        return Scrollpane;
+    }
 }

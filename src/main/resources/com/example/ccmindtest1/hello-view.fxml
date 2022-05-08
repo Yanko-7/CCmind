@@ -32,7 +32,7 @@
       <TreeView fx:id="treeview" layoutY="37.0" prefHeight="513.0" prefWidth="138.0" />
       <ScrollPane fx:id="Scrollpane" layoutX="138.0" layoutY="36.0" prefHeight="564.0" prefWidth="662.0">
          <content>
-          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="643.0" prefWidth="737.0" />
+          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="661.0" />
          </content>
       </ScrollPane>
       <Button fx:id="Add_Button" layoutX="157.0" layoutY="11.0" mnemonicParsing="false" text="添加" />
