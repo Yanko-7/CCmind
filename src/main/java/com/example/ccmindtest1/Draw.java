@@ -14,25 +14,31 @@ public class Draw {
     public static void update_len(TreeNode a) {//用于更新整棵树的所有节点的块上下大小，传入一个根节点即可
         double len = 0;
         if (a.isRoot()) {
+            LMaxLinkLen=0;
             for (TreeNode tmp : ROOT.getLchildren()) {
                 tmp.setType(-1);
                 update_len(tmp);
+                LMaxLinkLen=max(LMaxLinkLen,tmp.getMaxLinkLen()+(100-Draw.RecW)+tmp.getTextLen());
                 len += tmp.getBlockLen();
             }
             len += (ROOT.getLchildren().size() - 1) * Block_dis;
             ROOT.LBlockLen = (max(len, RecH));
             len = 0;
+            RMaxLinkLen=0;
             for (TreeNode tmp : ROOT.getRchildren()) {
                 tmp.setType(1);
                 update_len(tmp);
+                RMaxLinkLen=max(RMaxLinkLen,tmp.getMaxLinkLen()+(100-Draw.RecW)+tmp.getTextLen());
                 len += tmp.getBlockLen();
             }
             len += (ROOT.getRchildren().size() - 1) * Block_dis;
             ROOT.RBlockLen = (max(len, RecH));
         } else {
+            a.setMaxLinkLen(0);
             for (TreeNode tmp : a.getchildren()) {
                 tmp.setType(a.getType());
                 update_len(tmp);
+                a.setMaxLinkLen(max(a.getMaxLinkLen(),tmp.getMaxLinkLen()+(100-Draw.RecW)+tmp.getTextLen()));
                 len += tmp.getBlockLen();
             }
             len += (a.getchildren().size() - 1) * Block_dis;

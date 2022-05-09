@@ -19,5 +19,14 @@ public class Pane {
         }
         last=Math.max(root.getLayoutY() + Draw.RecH / 2 + ROOT.LBlockLen / 2,root.getLayoutY() + Draw.RecH / 2 + ROOT.RBlockLen / 2);
         A.setPrefHeight(last);
+        double l=root.getLayoutX()-ROOT.LMaxLinkLen;
+        if(l<0){
+            root.setLayoutX(root.getLayoutX()+Math.abs(l));
+        }
+        l=300-ROOT.LMaxLinkLen;
+        if(l>0)root.setLayoutX(300);
+        if(ROOT.LMaxLinkLen>300)root.setLayoutX(ROOT.LMaxLinkLen);
+        double r=root.getLayoutX()+root.getTextLen()+ROOT.RMaxLinkLen;
+        A.setPrefWidth(r);
     }
 }
