@@ -67,7 +67,7 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
             Draw.update_len(root);
-            Pane.update_pane(A1);
+            Pane.update_pane(A1,root);
             Draw.update(root, 1);
             Draw.update(root,-1);
         });
@@ -87,7 +87,7 @@ public class Controller implements Initializable {
                 CurNode.getparent().getView().getChildren().remove(CurNode.getView());
             }
             Draw.update_len(root);
-            Pane.update_pane(A1);
+            Pane.update_pane(A1,root);
             Draw.update(root, 1);
             Draw.update(root,-1);
             CurNode=null;
@@ -98,7 +98,7 @@ public class Controller implements Initializable {
             }
             ROOT.getRchildren().clear();
             update_len(root);
-            Pane.update_pane(A1);
+            Pane.update_pane(A1,root);
             update(root,-1);
             update(root,1);
         });
@@ -108,7 +108,7 @@ public class Controller implements Initializable {
             }
             ROOT.getLchildren().clear();
             update_len(root);
-            Pane.update_pane(A1);
+            Pane.update_pane(A1,root);
             update(root,-1);
             update(root,1);
         });
@@ -122,13 +122,10 @@ public class Controller implements Initializable {
                 ROOT.getRchildren().remove(ROOT.getRchildren().size()-1);
             }
             update_len(root);
-            Pane.update_pane(A1);
+            Pane.update_pane(A1,root);
             update(root,-1);
             update(root,1);
         });
-    }
-    public static TreeNode getRoot() {
-        return root;
     }
 
 }
