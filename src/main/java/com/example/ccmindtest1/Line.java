@@ -12,5 +12,6 @@ public class Line extends CubicCurve {
         super.setStrokeWidth(1);
         super.setFill(Color.TRANSPARENT);
         super.setStroke(Color.BLACK);
+        //super.setStroke(Color.web(String.valueOf(Color.YELLOW)));
     }
 }

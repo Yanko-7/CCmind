@@ -42,12 +42,12 @@ public class Controller implements Initializable {
         root.setLayoutY(250);
         A1.getChildren().add(root);
         treeview.setRoot(root.getView());
-        root.initNode();
+        root.initNode(root,A1);
         //
         Add_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;
             TreeNode tmp = new TreeNode("子主题");
-            tmp.initNode();
+            tmp.initNode(root,A1);
             if (CurNode.isRoot()) {
                 if(ROOT.getLchildren().size()<ROOT.getRchildren().size()){
                     ROOT.getLchildren().add(tmp);
@@ -66,10 +66,7 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp);//添加节点
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
-            Draw.update_len(root);
-            Pane.update_pane(A1,root);
-            Draw.update(root, 1);
-            Draw.update(root,-1);
+            Draw.update(root,A1);
         });
         Del_Button.setOnAction(event -> {//删除节点按键
             if (CurNode == null || CurNode.isRoot()) return;
@@ -86,10 +83,7 @@ public class Controller implements Initializable {
                 CurNode.getparent().getchildren().remove(CurNode);
                 CurNode.getparent().getView().getChildren().remove(CurNode.getView());
             }
-            Draw.update_len(root);
-            Pane.update_pane(A1,root);
-            Draw.update(root, 1);
-            Draw.update(root,-1);
+            Draw.update(root,A1);
             CurNode=null;
         });
         left_layout_button.setOnAction(event ->{
@@ -97,20 +91,14 @@ public class Controller implements Initializable {
                 ROOT.getLchildren().add(tmp);
             }
             ROOT.getRchildren().clear();
-            update_len(root);
-            Pane.update_pane(A1,root);
-            update(root,-1);
-            update(root,1);
+            Draw.update(root,A1);
         });
         right_layout_button.setOnAction(event ->{
             for(TreeNode tmp: ROOT.getLchildren()){
                 ROOT.getRchildren().add(tmp);
             }
             ROOT.getLchildren().clear();
-            update_len(root);
-            Pane.update_pane(A1,root);
-            update(root,-1);
-            update(root,1);
+            Draw.update(root,A1);
         });
         Automatic_layout_button.setOnAction(event ->{
             while(ROOT.getLchildren().size()>ROOT.getRchildren().size()){
@@ -121,10 +109,7 @@ public class Controller implements Initializable {
                 ROOT.getLchildren().add(ROOT.getRchildren().get(ROOT.getRchildren().size()-1));
                 ROOT.getRchildren().remove(ROOT.getRchildren().size()-1);
             }
-            update_len(root);
-            Pane.update_pane(A1,root);
-            update(root,-1);
-            update(root,1);
+            Draw.update(root,A1);
         });
     }
 
