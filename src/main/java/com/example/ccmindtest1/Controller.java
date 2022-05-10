@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +19,8 @@ public class Controller implements Initializable {
     @FXML
     private TreeView treeview;
     @FXML
+    private MenuBar Menubar;
+    @FXML
     private Button Add_Button;
     @FXML
     private Button Del_Button;
@@ -29,14 +33,16 @@ public class Controller implements Initializable {
     @FXML
     private ScrollPane Scrollpane;
     @FXML
+    private MenuItem Save_button;
+    @FXML
+    private MenuItem Open_button;
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //初始化根节点
         root = new TreeNode("主题1");
         Scrollpane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        //Scrollpane.setFitToHeight(true);
-        //Scrollpane.setFitToHeight(true);
         root.setIsroot(true);
         root.setLayoutX(300);
         root.setLayoutY(250);
@@ -49,12 +55,12 @@ public class Controller implements Initializable {
             TreeNode tmp = new TreeNode("子主题");
             tmp.initNode(root,A1);
             if (CurNode.isRoot()) {
-                if(ROOT.getLchildren().size()<ROOT.getRchildren().size()){
-                    ROOT.getLchildren().add(tmp);
+                if(TreeNode.getLchildren().size()<TreeNode.getRchildren().size()){
+                    TreeNode.getLchildren().add(tmp);
                     tmp.setType(-1);
                 }
                 else {
-                    ROOT.getRchildren().add(tmp);
+                    TreeNode.getRchildren().add(tmp);
                     tmp.setType(1);
                 }
                 tmp.setParent(CurNode);
@@ -72,11 +78,11 @@ public class Controller implements Initializable {
             if (CurNode == null || CurNode.isRoot()) return;
             Draw.DelNode(CurNode, A1);
             if (CurNode.getparent().isRoot()) {
-                if (ROOT.getLchildren().contains(CurNode)) {
-                    ROOT.getLchildren().remove(CurNode);
+                if (TreeNode.getLchildren().contains(CurNode)) {
+                    TreeNode.getLchildren().remove(CurNode);
                     root.getView().getChildren().remove(CurNode.getView());
                 } else {
-                    ROOT.getRchildren().remove(CurNode);
+                    TreeNode.getRchildren().remove(CurNode);
                     root.getView().getChildren().remove(CurNode.getView());
                 }
             } else {
@@ -87,29 +93,66 @@ public class Controller implements Initializable {
             CurNode=null;
         });
         left_layout_button.setOnAction(event ->{
-            for(TreeNode tmp: ROOT.getRchildren()){
-                ROOT.getLchildren().add(tmp);
+            for(TreeNode tmp: TreeNode.getRchildren()){
+                TreeNode.getLchildren().add(tmp);
             }
-            ROOT.getRchildren().clear();
+            TreeNode.getRchildren().clear();
             Draw.update(root,A1);
         });
         right_layout_button.setOnAction(event ->{
-            for(TreeNode tmp: ROOT.getLchildren()){
-                ROOT.getRchildren().add(tmp);
+            for(TreeNode tmp: TreeNode.getLchildren()){
+                TreeNode.getRchildren().add(tmp);
             }
-            ROOT.getLchildren().clear();
+            TreeNode.getLchildren().clear();
             Draw.update(root,A1);
         });
         Automatic_layout_button.setOnAction(event ->{
-            while(ROOT.getLchildren().size()>ROOT.getRchildren().size()){
-                ROOT.getRchildren().add(ROOT.getLchildren().get(ROOT.getLchildren().size()-1));
-                ROOT.getLchildren().remove(ROOT.getLchildren().size()-1);
+            while(TreeNode.getLchildren().size()>TreeNode.getRchildren().size()){
+                TreeNode.getRchildren().add(TreeNode.getLchildren().get(TreeNode.getLchildren().size()-1));
+                TreeNode.getLchildren().remove(TreeNode.getLchildren().size()-1);
             }
-            while(ROOT.getLchildren().size()<ROOT.getRchildren().size()){
-                ROOT.getLchildren().add(ROOT.getRchildren().get(ROOT.getRchildren().size()-1));
-                ROOT.getRchildren().remove(ROOT.getRchildren().size()-1);
+            while(TreeNode.getLchildren().size()<TreeNode.getRchildren().size()){
+                TreeNode.getLchildren().add(TreeNode.getRchildren().get(TreeNode.getRchildren().size()-1));
+                TreeNode.getRchildren().remove(TreeNode.getRchildren().size()-1);
             }
             Draw.update(root,A1);
+        });
+        Open_button.setOnAction(event ->{
+            /*Stage tmpstage=new Stage();
+            FileChooser fileChooser=new FileChooser();
+            fileChooser.setTitle("打开");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CCmind files","*.cmid"));
+            fileChooser.showOpenDialog(tmpstage);
+            */
+            FileManger fm=new FileManger();
+            TreeNode tmp=null;
+            tmp= (TreeNode) fm.Open_File();
+            if(tmp!=null){
+                A1.getChildren().clear();
+                root=tmp;
+                root.initNode(root,A1);
+                A1.getChildren().add(root);
+                treeview.setRoot(root.getView());
+                for(TreeNode tmp1:TreeNode.getRchildren()){
+                    reload(root,tmp1,A1);
+                }
+                for(TreeNode tmp1:TreeNode.getLchildren()){
+                    reload(root,tmp1,A1);
+                }
+
+            }
+            update(root,A1);
+            System.out.println(root.getTxt());
+        });
+        Save_button.setOnAction(event->{
+            FileManger fm=new FileManger();
+            fm.Save_File(root);
+            /*Stage tmpstage=new Stage();
+            FileChooser fileChooser=new FileChooser();
+            fileChooser.setTitle("打开");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CCmind files","*.cmid"));
+            fileChooser.showSaveDialog(tmpstage);
+            */
         });
     }
 

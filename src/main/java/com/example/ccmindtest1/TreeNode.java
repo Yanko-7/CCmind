@@ -4,33 +4,64 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import static com.example.ccmindtest1.Draw.*;
 
-public class TreeNode extends TextField {
+public class TreeNode extends TextField implements Serializable {
+    //
+    public static double LBlockLen=Draw.RecH;
+    public static double RBlockLen=Draw.RecH;
+    public static double LMaxLinkLen;
+    public static double RMaxLinkLen;
+    private static ArrayList<TreeNode> Lchildren=new ArrayList<>();//根节点的左子树
+    private static ArrayList<TreeNode> Rchildren=new ArrayList<>();//根节点的右子树子树
+    public static ArrayList<TreeNode> getLchildren() {
+        return Lchildren;
+    }
+    public static ArrayList<TreeNode> getRchildren() {
+        return Rchildren;
+    }
+    public static void setLchildren(ArrayList<TreeNode> lchildren) {
+        Lchildren = lchildren;
+    }
+
+    public static void setRchildren(ArrayList<TreeNode> rchildren) {
+        Rchildren = rchildren;
+    }
+
+    //
     private double BlockLen;//块长度
     private double TextLen;//文本宽度
     private double MaxLinkLen;//最长子链
     private int type;//该节点向左还是向右 type =-1 向左，=1向右
     private boolean isroot;
     private TreeNode parent;
-    private TreeItem<String> view;//该节点在TreeView上的视图
+    private TreeViewItem view;//该节点在TreeView上的视图
     private ArrayList<TreeNode> children;
     private Line line;
+    private String txt;
 
-    TreeNode(String txt) {
-        super(txt);
+    TreeNode(String txt1) {
+        super(txt1);
+        setTxt(txt1);
         BlockLen = Draw.RecH;
         super.setPrefHeight(Draw.RecH);
-        super.setPrefWidth(Draw.RecW);
+        super.setPrefWidth(48);
         setTextLen(RecW);
         type = 1;
         children = new ArrayList<>();
         line = new Line();
-        view = new TreeItem<>(txt);
+        view = new TreeViewItem("子主题");
         view.setExpanded(true);
     }
+    public String getTxt() {
+        return txt;
+    }
+    public void setTxt(String txt) {
+        this.txt = txt;
+    }
+
     public TreeItem<String> getView() {
         return view;
     }
@@ -71,6 +102,7 @@ public class TreeNode extends TextField {
     public void initNode(TreeNode root,AnchorPane A1) {
         this.setOnMouseClicked(event -> {
             CurNode = this;
+            //System.out.println(22222);
             for (TreeNode tmp : CurNode.getchildren()) {
                 System.out.println(tmp.getLayoutX() + " " + tmp.getLayoutY() + " " + tmp.getBlockLen());
             }
@@ -78,21 +110,20 @@ public class TreeNode extends TextField {
         super.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                view.setValue(TreeNode.super.getText());
-            }
-        });
-        super.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                //动态长度
+                txt=TreeNode.super.getText();
+                view.setValue(txt);
                 TreeNode.super.setPrefWidth(Math.max(TreeNode.super.getText().length()*13.5,48));
-                setTextLen(TreeNode.super.getPrefWidth());
+                TextLen=TreeNode.super.getPrefWidth();
                 update(root,A1);
-                //System.out.println(TreeNode.super.getText().length());
             }
         });
         //设置节点的背景颜色
+        super.setPrefHeight(Draw.RecH);
+        super.setPrefWidth(this.TextLen);
         super.setStyle("-fx-control-inner-background:#909020");
+        super.setText(this.txt);
+        view = new TreeViewItem(this.txt);
+        view.setExpanded(true);
     }
 
     public Line getLine() {

@@ -2,7 +2,7 @@ package com.example.ccmindtest1;
 
 import javafx.scene.layout.AnchorPane;
 
-import static com.example.ccmindtest1.ROOT.*;
+import static com.example.ccmindtest1.TreeNode.*;
 import static java.lang.Math.max;
 
 public class Draw {
@@ -15,24 +15,24 @@ public class Draw {
         double len = 0;
         if (a.isRoot()) {
             LMaxLinkLen=0;
-            for (TreeNode tmp : ROOT.getLchildren()) {
+            for (TreeNode tmp : TreeNode.getLchildren()) {
                 tmp.setType(-1);
                 update_len(tmp);
                 LMaxLinkLen=max(LMaxLinkLen,tmp.getMaxLinkLen()+(100-Draw.RecW)+tmp.getTextLen());
                 len += tmp.getBlockLen();
             }
-            len += (ROOT.getLchildren().size() - 1) * Block_dis;
-            ROOT.LBlockLen = (max(len, RecH));
+            len += (TreeNode.getLchildren().size() - 1) * Block_dis;
+            TreeNode.LBlockLen = (max(len, RecH));
             len = 0;
             RMaxLinkLen=0;
-            for (TreeNode tmp : ROOT.getRchildren()) {
+            for (TreeNode tmp : TreeNode.getRchildren()) {
                 tmp.setType(1);
                 update_len(tmp);
                 RMaxLinkLen=max(RMaxLinkLen,tmp.getMaxLinkLen()+(100-Draw.RecW)+tmp.getTextLen());
                 len += tmp.getBlockLen();
             }
-            len += (ROOT.getRchildren().size() - 1) * Block_dis;
-            ROOT.RBlockLen = (max(len, RecH));
+            len += (TreeNode.getRchildren().size() - 1) * Block_dis;
+            TreeNode.RBlockLen = (max(len, RecH));
         } else {
             a.setMaxLinkLen(0);
             for (TreeNode tmp : a.getchildren()) {
@@ -53,17 +53,17 @@ public class Draw {
         double last = a.getLayoutY() + Draw.RecH / 2 - a.getBlockLen() / 2;
         if (op != 0) {
             if (op == -1) {
-                for (TreeNode tmp : ROOT.getLchildren()) {
+                for (TreeNode tmp : TreeNode.getLchildren()) {
                     last = SetSon(a, last, tmp);
                 }
-                for (TreeNode tmp : ROOT.getLchildren()) {
+                for (TreeNode tmp : TreeNode.getLchildren()) {
                     update_pos(tmp, 0);
                 }
             } else {
-                for (TreeNode tmp : ROOT.getRchildren()) {
+                for (TreeNode tmp : TreeNode.getRchildren()) {
                     last = SetSon(a, last, tmp);
                 }
-                for (TreeNode tmp : ROOT.getRchildren()) {
+                for (TreeNode tmp : TreeNode.getRchildren()) {
                     update_pos(tmp, 0);
                 }
             }
@@ -105,5 +105,13 @@ public class Draw {
         Pane.update_pane(A1,root);
         Draw.update_pos(root, 1);
         Draw.update_pos(root,-1);
+    }
+    public static void reload(TreeNode root,TreeNode a,AnchorPane A1){
+        a.initNode(root,A1);
+        A1.getChildren().add(a);
+        A1.getChildren().add(a.getLine());
+        for(TreeNode tmp : a.getchildren()){
+            reload(root,tmp,A1);
+        }
     }
 }

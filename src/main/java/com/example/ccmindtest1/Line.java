@@ -3,7 +3,9 @@ package com.example.ccmindtest1;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurve;
 
-public class Line extends CubicCurve {
+import java.io.Serializable;
+
+public class Line extends CubicCurve implements Serializable {
     public void SetLine(double startX,double startY,double endX,double endY){
         super.setStartX(startX);super.setStartY(startY);
         super.setEndX(endX);super.setEndY(endY);
