@@ -47,13 +47,11 @@ public class TreeNode extends TextField implements Serializable {
         setTxt(txt1);
         BlockLen = Draw.RecH;
         super.setPrefHeight(Draw.RecH);
-        super.setPrefWidth(48);
+        super.setPrefWidth(50);
         setTextLen(RecW);
         type = 1;
         children = new ArrayList<>();
         line = new Line();
-        view = new TreeViewItem("子主题");
-        view.setExpanded(true);
     }
     public String getTxt() {
         return txt;
@@ -62,7 +60,7 @@ public class TreeNode extends TextField implements Serializable {
         this.txt = txt;
     }
 
-    public TreeItem<String> getView() {
+    public TreeViewItem getView() {
         return view;
     }
     public TreeNode getparent() {
@@ -110,7 +108,7 @@ public class TreeNode extends TextField implements Serializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 txt=TreeNode.super.getText();
                 view.setValue(txt);
-                TreeNode.super.setPrefWidth(Math.max(TreeNode.super.getText().length()*13.5,48));
+                TreeNode.super.setPrefWidth(Math.max(TreeNode.super.getText().length()*13,50));
                 TextLen=TreeNode.super.getPrefWidth();
                 update(root,A1);
             }

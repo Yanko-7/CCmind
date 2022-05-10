@@ -48,8 +48,8 @@ public class Controller implements Initializable {
         root.setLayoutX(300);
         root.setLayoutY(250);
         A1.getChildren().add(root);
-        treeview.setRoot(root.getView());
         root.initNode(root,A1);
+        treeview.setRoot(root.getView());
         //
         Add_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;
