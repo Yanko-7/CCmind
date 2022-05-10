@@ -98,11 +98,9 @@ public class TreeNode extends TextField implements Serializable {
     public ArrayList<TreeNode> getchildren() {
         return children;
     }
-
     public void initNode(TreeNode root,AnchorPane A1) {
         this.setOnMouseClicked(event -> {
             CurNode = this;
-            //System.out.println(22222);
             for (TreeNode tmp : CurNode.getchildren()) {
                 System.out.println(tmp.getLayoutX() + " " + tmp.getLayoutY() + " " + tmp.getBlockLen());
             }
@@ -137,11 +135,9 @@ public class TreeNode extends TextField implements Serializable {
     public void setType(int type) {
         this.type = type;
     }
-
     public double getBlockLen() {
         return BlockLen;
     }
-
     public void setBlockLen(double blockLen) {
         BlockLen = blockLen;
     }

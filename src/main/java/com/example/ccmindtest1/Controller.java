@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -118,15 +119,13 @@ public class Controller implements Initializable {
             Draw.update(root,A1);
         });
         Open_button.setOnAction(event ->{
-            /*Stage tmpstage=new Stage();
+            Stage tmpstage=new Stage();
             FileChooser fileChooser=new FileChooser();
             fileChooser.setTitle("打开");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CCmind files","*.cmid"));
-            fileChooser.showOpenDialog(tmpstage);
-            */
             FileManger fm=new FileManger();
             TreeNode tmp=null;
-            tmp= (TreeNode) fm.Open_File();
+            tmp= (TreeNode) fm.Open_File(fileChooser.showOpenDialog(tmpstage));
             if(tmp!=null){
                 A1.getChildren().clear();
                 root=tmp;
@@ -139,20 +138,23 @@ public class Controller implements Initializable {
                 for(TreeNode tmp1:TreeNode.getLchildren()){
                     reload(root,tmp1,A1);
                 }
-
+                update(root,A1);
             }
-            update(root,A1);
-            System.out.println(root.getTxt());
         });
         Save_button.setOnAction(event->{
             FileManger fm=new FileManger();
-            fm.Save_File(root);
-            /*Stage tmpstage=new Stage();
+            Stage tmpstage=new Stage();
             FileChooser fileChooser=new FileChooser();
-            fileChooser.setTitle("打开");
+            fileChooser.setTitle("保存");
+            fileChooser.setInitialFileName("test1");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CCmind files","*.cmid"));
-            fileChooser.showSaveDialog(tmpstage);
-            */
+            File file=fileChooser.showSaveDialog(tmpstage);
+            if(file==null)return;
+            try{
+                fm.Save_File(root,file);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         });
     }
 

@@ -6,12 +6,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileManger {
-    public void Save_File(TreeNode a){
-        File file=new File("cc1.cmid");
+    public void Save_File(TreeNode a,File file){
         WriteObject(a,file);
     }
-    public Object Open_File(){
-        File file=new File("cc1.cmid");
+    public Object Open_File(File file){
         return readObject(file);
     }
     private void WriteObject(Object obj, File file){
@@ -51,8 +49,10 @@ public class FileManger {
         } catch (IOException e){
             System.out.println("read failed");
             e.printStackTrace();
+            return  null;
         }catch (ClassNotFoundException e){
             e.printStackTrace();
+            return  null;
         }
         return  tmp;
     }

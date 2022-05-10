@@ -108,6 +108,7 @@ public class Draw {
     }
     public static void reload(TreeNode root,TreeNode a,AnchorPane A1){
         a.initNode(root,A1);
+        a.getparent().getView().getChildren().add(a.getView());
         A1.getChildren().add(a);
         A1.getChildren().add(a.getLine());
         for(TreeNode tmp : a.getchildren()){
