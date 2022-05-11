@@ -11,10 +11,10 @@
 
 <AnchorPane fx:id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
    <children>
-      <JFXTreeView fx:id="treeview" layoutY="86.0" prefHeight="716.0" prefWidth="232.0" style="-fx-background-color: #FEDBD0;" />
+      <JFXTreeView fx:id="treeview" layoutY="86.0" prefHeight="716.0" prefWidth="230.0" style="-fx-background-color: #FEDBD0;" />
       <ScrollPane fx:id="Scrollpane" layoutX="232.0" layoutY="86.0" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #ffffff;">
          <content>
-          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1046.0" style="-fx-background-color: #FFFFFF;" />
+          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1045.0" style="-fx-background-color: #FFFFFF;" />
          </content>
       </ScrollPane>
       <JFXButton fx:id="AddSon_Button" layoutX="202.0" layoutY="21.0" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: #FFA726; -jfx-disable-visual-focus: true; -fx-font-weight: bold;" text="添加子节点">
@@ -28,7 +28,6 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXNodesList layoutX="254.0" layoutY="7.0" />
       <JFXNodesList fx:id="Menubar" layoutX="14.0" layoutY="21.0" prefHeight="0.0" prefWidth="0.0">
          <children>
             <JFXButton prefHeight="46.0" prefWidth="118.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="文件">
@@ -57,7 +56,7 @@
                </font>
             </JFXButton>
          </children></JFXNodesList>
-      <JFXButton fx:id="Automatic_layout_button" layoutX="1075.0" layoutY="15.0" prefHeight="58.0" prefWidth="131.0" style="-fx-border-radius: 10; -fx-font-weight: bold;" text="自动调整" textFill="WHITE">
+      <JFXButton fx:id="Automatic_layout_button" layoutX="1075.0" layoutY="15.0" prefHeight="58.0" prefWidth="131.0" style="-fx-font-weight: bold;" text="自动调整" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="36.0">
                <image>
@@ -81,7 +80,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="right_layout_button" layoutX="943.0" layoutY="15.0" style="-fx-background-color: #000000; -fx-font-weight: bold;" text="右布局" textFill="WHITE">
+      <JFXButton fx:id="right_layout_button" layoutX="943.0" layoutY="15.0" style="-fx-font-weight: bold;" text="右布局" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="48.0" fitWidth="48.0">
                <image>

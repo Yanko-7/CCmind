@@ -80,6 +80,7 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
             Draw.update(root,A1);
+            CurNode=tmp;
         });
         AddBro_Button.setOnAction(event -> {
             if (CurNode == null) return;
@@ -105,6 +106,7 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getparent().getView().getChildren().add(tmp.getView());//添加试图
             Draw.update(root,A1);
+            CurNode=tmp;
         });
         Del_Button.setOnAction(event -> {//删除节点按键
             if (CurNode == null || CurNode.isRoot()) return;
