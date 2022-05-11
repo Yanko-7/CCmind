@@ -37,7 +37,10 @@ public class Controller implements Initializable {
     private MenuItem Save_button;
     @FXML
     private MenuItem Open_button;
+    @FXML 
+    private MenuItem New_button;
     @FXML
+    private MenuItem Export_button;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -154,6 +157,31 @@ public class Controller implements Initializable {
                 fm.Save_File(root,file);
             }catch (Exception e){
                 e.printStackTrace();
+            }
+        });
+        New_button.setOnAction(event->{
+            TreeNode.getRchildren().clear();
+            TreeNode.getLchildren().clear();
+            A1.getChildren().clear();
+            root=new TreeNode("主题1");
+            root.initNode(root,A1);
+            root.setIsroot(true);
+            root.setLayoutX(300);
+            root.setLayoutY(250);
+            treeview.setRoot(root.getView());
+            A1.getChildren().add(root);
+        });
+        Export_button.setOnAction(event->{
+            FileChooser fileChooser=new FileChooser();
+            fileChooser.setTitle("导出");
+            fileChooser.setInitialFileName("test1");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("PNG","*.png"),
+                    new FileChooser.ExtensionFilter("JPG","*.jpg"));
+            File file=fileChooser.showSaveDialog(new Stage());
+            if(file!=null){
+                FileManger fm=new FileManger();
+                fm.export(A1,file);
             }
         });
     }

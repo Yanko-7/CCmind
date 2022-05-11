@@ -14,11 +14,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="新建" />
+                  <MenuItem fx:id="New_button" mnemonicParsing="false" text="新建" />
                   <MenuItem fx:id="Open_button" mnemonicParsing="false" text="打开" />
                   <MenuItem fx:id="Save_button" mnemonicParsing="false" text="保存" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="Export_button" mnemonicParsing="false" text="导出" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

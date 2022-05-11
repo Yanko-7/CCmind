@@ -1,10 +1,12 @@
 package com.example.ccmindtest1;
 
-import javafx.scene.control.TreeTableRow;
-
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
 import java.io.*;
 import java.util.ArrayList;
-
 public class FileManger {
     public void Save_File(TreeNode a,File file){
         WriteObject(a,file);
@@ -55,5 +57,14 @@ public class FileManger {
             return  null;
         }
         return  tmp;
+    }
+    public void export(AnchorPane A1,File file){
+        WritableImage image=A1.snapshot(new SnapshotParameters(),null);
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image,null),"png",file);
+            System.out.println("保存成功");
+        }catch (IOException ex){
+            System.out.println("保存失败"+ex.getMessage());
+        }
     }
 }
