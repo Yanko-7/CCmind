@@ -99,9 +99,6 @@ public class TreeNode extends TextField implements Serializable {
     public void initNode(TreeNode root,AnchorPane A1) {
         this.setOnMouseClicked(event -> {
             CurNode = this;
-            for (TreeNode tmp : CurNode.getchildren()) {
-                System.out.println(tmp.getLayoutX() + " " + tmp.getLayoutY() + " " + tmp.getBlockLen());
-            }
         });
         super.textProperty().addListener(new ChangeListener<String>() {
             @Override

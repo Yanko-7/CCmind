@@ -20,8 +20,6 @@ public class Controller implements Initializable {
     @FXML
     private JFXTreeView treeview;
     @FXML
-    private MenuBar Menubar;
-    @FXML
     private JFXButton AddSon_Button;
     @FXML
     private JFXButton AddBro_Button;
@@ -36,13 +34,15 @@ public class Controller implements Initializable {
     @FXML
     private ScrollPane Scrollpane;
     @FXML
-    private MenuItem Save_button;
+    private JFXButton Save_button;
     @FXML
-    private MenuItem Open_button;
+    private JFXButton Open_button;
     @FXML 
-    private MenuItem New_button;
+    private JFXButton New_button;
     @FXML
-    private MenuItem Export_button;
+    private JFXButton Export_button;
+    @FXML
+    private JFXNodesList Menubar;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -50,11 +50,12 @@ public class Controller implements Initializable {
         root = new TreeNode("主题1");
         Scrollpane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         root.setIsroot(true);
-        root.setLayoutX(300);
-        root.setLayoutY(250);
+        root.setLayoutX(500);
+        root.setLayoutY(310);
         A1.getChildren().add(root);
         root.initNode(root,A1);
         treeview.setRoot(root.getView());
+        Menubar.animateList(false);
         //
         AddSon_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;

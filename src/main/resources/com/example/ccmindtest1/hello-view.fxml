@@ -1,48 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXNodesList?>
 <?import com.jfoenix.controls.JFXTreeView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
+<AnchorPane fx:id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
    <children>
-      <MenuBar fx:id="Menubar" layoutY="1.0" prefHeight="36.0" prefWidth="138.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem fx:id="New_button" mnemonicParsing="false" text="新建" />
-                  <MenuItem fx:id="Open_button" mnemonicParsing="false" text="打开" />
-                  <MenuItem fx:id="Save_button" mnemonicParsing="false" text="保存" />
-                  <MenuItem fx:id="Export_button" mnemonicParsing="false" text="导出" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ScrollPane fx:id="Scrollpane" layoutX="138.0" layoutY="36.0" prefHeight="564.0" prefWidth="662.0">
+      <JFXTreeView fx:id="treeview" layoutY="86.0" prefHeight="716.0" prefWidth="232.0" style="-fx-background-color: #FEDBD0;" />
+      <ScrollPane fx:id="Scrollpane" layoutX="232.0" layoutY="86.0" prefHeight="716.0" prefWidth="1047.0" style="-fx-background-color: #ffffff;">
          <content>
-          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="661.0" />
+          <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1046.0" style="-fx-background-color: #FFFFFF;" />
          </content>
       </ScrollPane>
-      <JFXButton fx:id="AddBro_Button" layoutX="262.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="添加兄弟节点" />
-      <JFXTreeView fx:id="treeview" layoutX="-1.0" layoutY="37.0" prefHeight="564.0" prefWidth="138.0" style="-fx-background-color: #F9AA33;" />
-      <JFXButton fx:id="left_layout_button" layoutX="469.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="左布局" />
-      <JFXButton fx:id="Del_Button" layoutX="377.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="删除节点" />
-      <JFXButton fx:id="right_layout_button" layoutX="553.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="右布局" />
-      <JFXButton fx:id="Automatic_layout_button" layoutX="637.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="自动调整" />
-      <JFXButton fx:id="AddSon_Button" layoutX="158.0" layoutY="7.0" prefHeight="23.0" prefWidth="77.0" style="-fx-background-color: #F9AA33;" text="添加子节点" />
+      <JFXButton fx:id="AddSon_Button" layoutX="202.0" layoutY="21.0" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: #FFA726; -jfx-disable-visual-focus: true; -fx-font-weight: bold;" text="添加子节点">
+         <font>
+            <Font name="YouYuan" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0">
+               <image>
+                  <Image url="@../../../img/添加1.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXNodesList layoutX="254.0" layoutY="7.0" />
+      <JFXNodesList fx:id="Menubar" layoutX="14.0" layoutY="21.0" prefHeight="0.0" prefWidth="0.0">
+         <children>
+            <JFXButton prefHeight="46.0" prefWidth="118.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="文件">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="New_button" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="新建">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="Open_button" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="打开">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="Save_button" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="保存">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="Export_button" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="导出">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children></JFXNodesList>
+      <JFXButton fx:id="Automatic_layout_button" layoutX="1075.0" layoutY="15.0" prefHeight="58.0" prefWidth="131.0" style="-fx-border-radius: 10; -fx-font-weight: bold;" text="自动调整" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0">
+               <image>
+                  <Image url="@../../../img/zidong.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="AddBro_Button" layoutX="400.0" layoutY="21.0" prefHeight="46.0" prefWidth="152.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="添加兄弟节点">
+         <font>
+            <Font name="YouYuan" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0">
+               <image>
+                  <Image url="@../../../img/添加2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="right_layout_button" layoutX="943.0" layoutY="15.0" style="-fx-background-color: #000000; -fx-font-weight: bold;" text="右布局" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="48.0">
+               <image>
+                  <Image url="@../../../img/you.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="left_layout_button" layoutX="811.0" layoutY="16.0" style="-fx-font-weight: bold;" text="左布局" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="48.0">
+               <image>
+                  <Image url="@../../../img/zuo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="Del_Button" layoutX="609.0" layoutY="22.0" prefHeight="42.0" prefWidth="131.0" style="-fx-background-color: #FFA726; -fx-font-weight: bold;" text="删除节点">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0">
+               <image>
+                  <Image url="@../../../img/删除1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
