@@ -116,7 +116,7 @@ public class TreeNode extends TextField implements Serializable {
         //设置节点的背景颜色
         super.setPrefHeight(Draw.RecH);
         super.setPrefWidth(this.TextLen);
-        super.setStyle("-fx-control-inner-background:#909020");
+        super.setStyle("-fx-control-inner-background:#F9AA33");
         super.setText(this.txt);
         view = new TreeViewItem(this.txt);
         view.setExpanded(true);

@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import com.jfoenix.controls.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,19 +18,21 @@ public class Controller implements Initializable {
     private AnchorPane A1;//添加节点的地方
     private static TreeNode root;
     @FXML
-    private TreeView treeview;
+    private JFXTreeView treeview;
     @FXML
     private MenuBar Menubar;
     @FXML
-    private Button Add_Button;
+    private JFXButton AddSon_Button;
     @FXML
-    private Button Del_Button;
+    private JFXButton AddBro_Button;
     @FXML
-    private Button left_layout_button;
+    private JFXButton Del_Button;
     @FXML
-    private Button right_layout_button;
+    private JFXButton left_layout_button;
     @FXML
-    private Button Automatic_layout_button;
+    private JFXButton right_layout_button;
+    @FXML
+    private JFXButton Automatic_layout_button;
     @FXML
     private ScrollPane Scrollpane;
     @FXML
@@ -54,7 +56,7 @@ public class Controller implements Initializable {
         root.initNode(root,A1);
         treeview.setRoot(root.getView());
         //
-        Add_Button.setOnAction(event -> {//添加节点按键
+        AddSon_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;
             TreeNode tmp = new TreeNode("子主题");
             tmp.initNode(root,A1);
@@ -76,6 +78,31 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp);//添加节点
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
+            Draw.update(root,A1);
+        });
+        AddBro_Button.setOnAction(event -> {
+            if (CurNode == null) return;
+            if(CurNode.isRoot())return;
+            TreeNode tmp = new TreeNode("子主题");
+            tmp.initNode(root,A1);
+            if (CurNode.getparent().isRoot()) {
+                if(CurNode.getType()==-1){
+                    TreeNode.getLchildren().add(tmp);
+                    tmp.setType(-1);
+                }
+                else {
+                    TreeNode.getRchildren().add(tmp);
+                    tmp.setType(1);
+                }
+                tmp.setParent(CurNode.getparent());
+            } else {
+                CurNode.getparent().getchildren().add(tmp);
+                tmp.setParent(CurNode.getparent());
+                tmp.setType(CurNode.getType());
+            }
+            A1.getChildren().add(tmp);//添加节点
+            A1.getChildren().add(tmp.getLine());//添加线
+            CurNode.getparent().getView().getChildren().add(tmp.getView());//添加试图
             Draw.update(root,A1);
         });
         Del_Button.setOnAction(event -> {//删除节点按键

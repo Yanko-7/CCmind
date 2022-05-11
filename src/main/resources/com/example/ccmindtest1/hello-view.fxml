@@ -37,11 +37,12 @@
           <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="661.0" />
          </content>
       </ScrollPane>
-      <JFXButton fx:id="Add_Button" layoutX="150.0" layoutY="7.0" prefHeight="23.0" prefWidth="46.0" style="-fx-background-color: #F9AA33;" text="添加" />
-      <JFXTreeView fx:id="treeview" layoutX="-1.0" layoutY="37.0" prefHeight="564.0" prefWidth="138.0" />
-      <JFXButton fx:id="left_layout_button" layoutX="260.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="左布局" />
-      <JFXButton fx:id="Del_Button" layoutX="207.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="删除" />
-      <JFXButton fx:id="right_layout_button" layoutX="323.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="右布局" />
-      <JFXButton fx:id="Automatic_layout_button" layoutX="387.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="自动调整" />
+      <JFXButton fx:id="AddBro_Button" layoutX="262.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="添加兄弟节点" />
+      <JFXTreeView fx:id="treeview" layoutX="-1.0" layoutY="37.0" prefHeight="564.0" prefWidth="138.0" style="-fx-background-color: #F9AA33;" />
+      <JFXButton fx:id="left_layout_button" layoutX="469.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="左布局" />
+      <JFXButton fx:id="Del_Button" layoutX="377.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="删除节点" />
+      <JFXButton fx:id="right_layout_button" layoutX="553.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="右布局" />
+      <JFXButton fx:id="Automatic_layout_button" layoutX="637.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="自动调整" />
+      <JFXButton fx:id="AddSon_Button" layoutX="158.0" layoutY="7.0" prefHeight="23.0" prefWidth="77.0" style="-fx-background-color: #F9AA33;" text="添加子节点" />
    </children>
 </AnchorPane>
