@@ -98,7 +98,12 @@ public class TreeNode extends TextField implements Serializable {
     }
     public void initNode(TreeNode root,AnchorPane A1) {
         this.setOnMouseClicked(event -> {
+            if(CurNode!=null) {
+                //super.setStyle("-fx-control-inner-background:#F9AA33");
+                CurNode.setStyle("-fx-control-inner-background:#F9AA33");
+            }
             CurNode = this;
+            CurNode.setStyle("-fx-control-inner-background:#F9AA33;"+"-fx-border-color: RED;");
         });
         super.textProperty().addListener(new ChangeListener<String>() {
             @Override

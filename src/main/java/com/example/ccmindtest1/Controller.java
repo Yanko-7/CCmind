@@ -55,7 +55,7 @@ public class Controller implements Initializable {
         A1.getChildren().add(root);
         root.initNode(root,A1);
         treeview.setRoot(root.getView());
-        Menubar.animateList(false);
+        Menubar.setSpacing(10);
         //
         AddSon_Button.setOnAction(event -> {//添加节点按键
             if (CurNode == null) return;
@@ -80,7 +80,6 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getView().getChildren().add(tmp.getView());//添加试图
             Draw.update(root,A1);
-            CurNode=tmp;
         });
         AddBro_Button.setOnAction(event -> {
             if (CurNode == null) return;
@@ -106,7 +105,6 @@ public class Controller implements Initializable {
             A1.getChildren().add(tmp.getLine());//添加线
             CurNode.getparent().getView().getChildren().add(tmp.getView());//添加试图
             Draw.update(root,A1);
-            CurNode=tmp;
         });
         Del_Button.setOnAction(event -> {//删除节点按键
             if (CurNode == null || CurNode.isRoot()) return;
@@ -196,8 +194,8 @@ public class Controller implements Initializable {
             root=new TreeNode("主题1");
             root.initNode(root,A1);
             root.setIsroot(true);
-            root.setLayoutX(300);
-            root.setLayoutY(250);
+            root.setLayoutX(500);
+            root.setLayoutY(310);
             treeview.setRoot(root.getView());
             A1.getChildren().add(root);
         });
