@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="Pane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ccmindtest1.Controller">
@@ -32,16 +32,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TreeView fx:id="treeview" layoutY="37.0" prefHeight="564.0" prefWidth="138.0" />
       <ScrollPane fx:id="Scrollpane" layoutX="138.0" layoutY="36.0" prefHeight="564.0" prefWidth="662.0">
          <content>
           <AnchorPane fx:id="A1" minHeight="0.0" minWidth="0.0" prefHeight="563.0" prefWidth="661.0" />
          </content>
       </ScrollPane>
-      <Button fx:id="Add_Button" layoutX="156.0" layoutY="7.0" mnemonicParsing="false" text="添加" />
-      <Button fx:id="Del_Button" layoutX="207.0" layoutY="7.0" mnemonicParsing="false" text="删除" />
-      <Button fx:id="left_layout_button" layoutX="260.0" layoutY="7.0" mnemonicParsing="false" text="左布局" />
-      <Button fx:id="right_layout_button" layoutX="324.0" layoutY="7.0" mnemonicParsing="false" text="右布局" />
-      <Button fx:id="Automatic_layout_button" layoutX="392.0" layoutY="7.0" mnemonicParsing="false" text="自动调整" />
+      <JFXButton fx:id="Add_Button" layoutX="150.0" layoutY="7.0" prefHeight="23.0" prefWidth="46.0" style="-fx-background-color: #F9AA33;" text="添加" />
+      <JFXTreeView fx:id="treeview" layoutX="-1.0" layoutY="37.0" prefHeight="564.0" prefWidth="138.0" />
+      <JFXButton fx:id="left_layout_button" layoutX="260.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="左布局" />
+      <JFXButton fx:id="Del_Button" layoutX="207.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="删除" />
+      <JFXButton fx:id="right_layout_button" layoutX="323.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="右布局" />
+      <JFXButton fx:id="Automatic_layout_button" layoutX="387.0" layoutY="7.0" style="-fx-background-color: #F9AA33;" text="自动调整" />
    </children>
 </AnchorPane>
