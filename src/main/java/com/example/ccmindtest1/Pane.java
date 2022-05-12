@@ -9,7 +9,6 @@ public class Pane {
             root.setLayoutY(root.getLayoutY()+Math.abs(last));
         }
         last=Math.min(310 + Draw.RecH / 2 - TreeNode.LBlockLen / 2,310 + Draw.RecH / 2 - TreeNode.RBlockLen / 2);
-        System.out.println(root.getLayoutY()+" "+TreeNode.LBlockLen / 2+" "+TreeNode.RBlockLen / 2);
         if(last>0){
             root.setLayoutY(310);
         }
@@ -18,7 +17,7 @@ public class Pane {
             root.setLayoutY(last);
         }
         last=Math.max(root.getLayoutY() + Draw.RecH / 2 + TreeNode.LBlockLen / 2,root.getLayoutY() + Draw.RecH / 2 + TreeNode.RBlockLen / 2);
-        A.setPrefHeight(Math.max(last,720));
+        A.setPrefHeight(Math.max(last,693));
         double l=root.getLayoutX()-TreeNode.LMaxLinkLen;
         if(l<0){
             root.setLayoutX(root.getLayoutX()+Math.abs(l));
@@ -27,6 +26,6 @@ public class Pane {
         if(l>0)root.setLayoutX(500);
         if(TreeNode.LMaxLinkLen>500)root.setLayoutX(TreeNode.LMaxLinkLen);
         double r=root.getLayoutX()+root.getTextLen()+TreeNode.RMaxLinkLen;
-        A.setPrefWidth(Math.max(r,1045));
+        A.setPrefWidth(Math.max(r,1043));
     }
 }

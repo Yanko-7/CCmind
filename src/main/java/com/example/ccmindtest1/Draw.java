@@ -1,5 +1,6 @@
 package com.example.ccmindtest1;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import static com.example.ccmindtest1.TreeNode.*;
@@ -114,5 +115,8 @@ public class Draw {
         for(TreeNode tmp : a.getchildren()){
             reload(root,tmp,A1);
         }
+    }
+    public static void setHint(Label hint,String txt){
+        hint.setText(txt);
     }
 }

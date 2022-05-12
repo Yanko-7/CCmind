@@ -46,6 +46,8 @@ public class Controller implements Initializable {
     private JFXButton Export_button;
     @FXML
     private JFXNodesList Menubar;
+    @FXML
+    private Label Hint;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -61,7 +63,10 @@ public class Controller implements Initializable {
         Menubar.setSpacing(10);
         //
         AddSon_Button.setOnAction(event -> {//添加节点按键
-            if (CurNode == null) return;
+            if (CurNode == null) {
+                Draw.setHint(Hint,"请选择一个节点");
+                return;
+            }
             TreeNode tmp = new TreeNode("子主题");
             tmp.initNode(root,A1);
             if (CurNode.isRoot()) {
@@ -85,8 +90,14 @@ public class Controller implements Initializable {
             Draw.update(root,A1);
         });
         AddBro_Button.setOnAction(event -> {
-            if (CurNode == null) return;
-            if(CurNode.isRoot())return;
+            if (CurNode == null) {
+                Draw.setHint(Hint,"请选择一个节点");
+                return;
+            }
+            if(CurNode.isRoot()){
+                Draw.setHint(Hint,"根节点无法添加兄弟节点！");
+                return;
+            }
             TreeNode tmp = new TreeNode("子主题");
             tmp.initNode(root,A1);
             if (CurNode.getparent().isRoot()) {
@@ -110,7 +121,14 @@ public class Controller implements Initializable {
             Draw.update(root,A1);
         });
         Del_Button.setOnAction(event -> {//删除节点按键
-            if (CurNode == null || CurNode.isRoot()) return;
+            if(CurNode==null){
+                Draw.setHint(Hint,"请选择一个节点");
+                return;
+            }
+            if(CurNode.isRoot()){
+                Draw.setHint(Hint,"根节点无法被删除");
+                return;
+            }
             Draw.DelNode(CurNode, A1);
             if (CurNode.getparent().isRoot()) {
                 if (TreeNode.getLchildren().contains(CurNode)) {
@@ -201,6 +219,7 @@ public class Controller implements Initializable {
             root.setLayoutY(310);
             treeview.setRoot(root.getView());
             A1.getChildren().add(root);
+            CurNode=null;
         });
         Export_button.setOnAction(event->{
             FileChooser fileChooser=new FileChooser();
@@ -213,6 +232,7 @@ public class Controller implements Initializable {
             if(file!=null){
                 FileManger fm=new FileManger();
                 fm.export(A1,file);
+                Draw.setHint(Hint,"导出成功");
             }
         });
     }

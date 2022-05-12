@@ -1,6 +1,8 @@
 package com.example.ccmindtest1;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
@@ -97,13 +99,17 @@ public class TreeNode extends TextField implements Serializable {
         return children;
     }
     public void initNode(TreeNode root,AnchorPane A1) {
-        this.setOnMouseClicked(event -> {
+        this.setOnMouseClicked(event ->{
             if(CurNode!=null) {
-                //super.setStyle("-fx-control-inner-background:#F9AA33");
+                CurNode.setEditable(false);
                 CurNode.setStyle("-fx-control-inner-background:#F9AA33");
             }
             CurNode = this;
-            CurNode.setStyle("-fx-control-inner-background:#F9AA33;"+"-fx-border-color: RED;");
+            CurNode.setStyle("-fx-control-inner-background:#F9AA33;"+"-fx-border-color: #FF1493;"+"-fx-border-radius: 2px;");
+            if(event.getClickCount()==2){
+                super.setCursor(Cursor.TEXT);
+                super.setEditable(true);
+            }
         });
         super.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -116,19 +122,32 @@ public class TreeNode extends TextField implements Serializable {
             }
         });
         //设置节点的背景颜色
+        super.setAlignment(Pos.CENTER);
         super.setPrefHeight(Draw.RecH);
         super.setPrefWidth(this.TextLen);
         super.setStyle("-fx-control-inner-background:#F9AA33");
         super.setText(this.txt);
+        super.setEditable(false);
+        super.setOnMouseEntered(event->{
+            super.setCursor(Cursor.DEFAULT);
+            super.setStyle("-fx-control-inner-background:#F9AA33;"+"-fx-border-color:#00BFFF;"+"-fx-border-radius: 2px;");
+        });
+        super.setOnMouseExited(event->{
+            if(CurNode!=this) {
+                this.setStyle("-fx-control-inner-background:#F9AA33;");
+            }
+            else {
+                this.setStyle("-fx-control-inner-background:#F9AA33;"+"-fx-border-color:#FF1493;"+"-fx-border-radius: 2px;");
+            }
+        });
         view = new TreeViewItem(this.txt);
         view.setExpanded(true);
     }
-
     public Line getLine() {
         return line;
     }
-
     public int getType() {
+
         return type;
     }
 
