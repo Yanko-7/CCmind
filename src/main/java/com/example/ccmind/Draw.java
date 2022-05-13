@@ -5,7 +5,7 @@ import javafx.scene.layout.AnchorPane;
 
 import static java.lang.Math.max;
 
-public class Draw {
+public abstract class Draw {
     public static final double RecH = 24;//固定矩阵高
     public static final double RecW = 54;//固定矩阵长
     public static final double Block_dis = 24;////固定块距

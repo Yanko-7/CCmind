@@ -2,7 +2,7 @@ package com.example.ccmind;
 
 import javafx.scene.layout.AnchorPane;
 
-public class Pane {
+public abstract class Pane {
     public static void update_pane(AnchorPane A,TreeNode root){
         double last = Math.min(root.getLayoutY() + Draw.RecH / 2 - TreeNode.LBlockLen / 2,root.getLayoutY() + Draw.RecH / 2 - TreeNode.RBlockLen / 2);
         if(last<0){
