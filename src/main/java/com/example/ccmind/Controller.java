@@ -1,12 +1,16 @@
 package com.example.ccmind;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
+import com.jfoenix.controls.JFXTreeView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import com.jfoenix.controls.*;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -190,6 +194,11 @@ public class Controller implements Initializable {
                     reload(root,tmp1,A1);
                 }
                 update(root,A1);
+                Draw.setHint(Hint,"文件打开成功");
+                CurNode=null;
+            }
+            else{
+                Draw.setHint(Hint,"文件打开失败，文件已经损坏");
             }
         });
         Save_button.setOnAction(event->{

@@ -47,9 +47,9 @@ public class FileManger {
             TreeNode.setRchildren((ArrayList<TreeNode>) objin.readObject());
             tmp=objin.readObject();
             objin.close();
-            System.out.println("read success");
+            //System.out.println("read success");
         } catch (IOException e){
-            System.out.println("read failed");
+            //System.out.println("read failed");
             e.printStackTrace();
             return  null;
         }catch (ClassNotFoundException e){
