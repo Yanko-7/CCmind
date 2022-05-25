@@ -33,6 +33,7 @@ public class TreeNode extends TextField implements Serializable {
 
     //
     private double BlockLen;//块长度
+    private int SonSize;
     private double TextLen;//文本宽度
     private double MaxLinkLen;//最长子链
     private int type;//该节点向左还是向右 type =-1 向左，=1向右
@@ -158,5 +159,13 @@ public class TreeNode extends TextField implements Serializable {
     }
     public void setBlockLen(double blockLen) {
         BlockLen = blockLen;
+    }
+
+    public int getSonSize() {
+        return SonSize;
+    }
+
+    public void setSonSize(int sonSize) {
+        SonSize = sonSize;
     }
 }

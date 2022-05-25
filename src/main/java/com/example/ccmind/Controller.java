@@ -157,6 +157,7 @@ public class Controller implements Initializable {
             Draw.update(root,A1);
         });
         Automatic_layout_button.setOnAction(event ->{
+            /*
             while(TreeNode.getLchildren().size()>TreeNode.getRchildren().size()){
                 TreeNode.getRchildren().add(TreeNode.getLchildren().get(TreeNode.getLchildren().size()-1));
                 TreeNode.getLchildren().remove(TreeNode.getLchildren().size()-1);
@@ -164,7 +165,8 @@ public class Controller implements Initializable {
             while(TreeNode.getLchildren().size()<TreeNode.getRchildren().size()){
                 TreeNode.getLchildren().add(TreeNode.getRchildren().get(TreeNode.getRchildren().size()-1));
                 TreeNode.getRchildren().remove(TreeNode.getRchildren().size()-1);
-            }
+            }*/
+            Draw.GetDp();
             Draw.update(root,A1);
         });
         Open_button.setOnAction(event ->{

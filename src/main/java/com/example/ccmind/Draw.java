@@ -3,6 +3,9 @@ package com.example.ccmind;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+
+import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 public abstract class Draw {
@@ -117,5 +120,64 @@ public abstract class Draw {
     }
     public static void setHint(Label hint,String txt){
         hint.setText(txt);
+    }
+    public static void GetDp(){
+        int sum=0;int idx=0;
+        ArrayList<TreeNode>tmplist =new ArrayList<>();
+        for(TreeNode tmp:TreeNode.getLchildren()){
+            DFS(tmp);sum+=tmp.getSonSize();
+            tmplist.add(tmp);
+        }
+        for(TreeNode tmp:TreeNode.getRchildren()){
+            DFS(tmp);sum+=tmp.getSonSize();
+            tmplist.add(tmp);
+        }
+        int [][]dp=new int[tmplist.size()+1][sum+1];
+        int [][]pre=new int[tmplist.size()+1][sum+1];
+        dp[0][0]=1;
+        for(int i=1;i<=tmplist.size();i++){
+            for(int j=0;j<=sum;j++){
+                if(j-tmplist.get(i-1).getSonSize()>=0&&dp[i-1][j-tmplist.get(i-1).getSonSize()]==1){
+                    dp[i][j]=1;
+                    pre[i][j]=i;
+                }
+                else if(dp[i-1][j]==1){
+                    dp[i][j]=1;
+                    pre[i][j]=0;
+                }
+            }
+        }
+        int p=0;int minn=99999999;
+        boolean []st=new boolean[tmplist.size()+1];
+        for(int i=0;i<=sum;i++){
+            if(dp[tmplist.size()][i]==1&&abs(sum-2*i)<minn){
+                minn=abs(sum-2*i);
+                p=i;
+            }
+        }
+        for(int i=tmplist.size();i>=1;i--){
+            if(pre[i][p]!=0){
+                st[pre[i][p]]=true;
+                p-=tmplist.get(pre[i][p]-1).getSonSize();
+            }
+        }
+        TreeNode.getLchildren().clear();TreeNode.getRchildren().clear();
+        for(int i=1;i<=tmplist.size();i++){
+            if(st[i]==true){
+                TreeNode.getLchildren().add(tmplist.get(i-1));
+            }
+            else{
+                TreeNode.getRchildren().add(tmplist.get(i-1));
+            }
+        }
+        tmplist.clear();
+    }
+    public static void DFS(TreeNode u){
+        int res=0;
+        for(TreeNode tmp:u.getchildren()){
+            DFS(tmp);
+            res+=tmp.getSonSize();
+        }
+        u.setSonSize(res+1);
     }
 }
